@@ -1,0 +1,464 @@
+{
+  "expanded_careers": {
+    "high_school_entry": [
+      {
+        "title": "Retail Sales Associate",
+        "starting_salary": 26000,
+        "salary_growth": 0.03,
+        "max_salary": 35000,
+        "education_required": "High school diploma",
+        "description": "Customer service and sales in retail stores",
+        "promotion_path": ["Shift Supervisor", "Assistant Manager", "Store Manager"],
+        "skills_developed": ["customer service", "sales", "inventory management"]
+      },
+      {
+        "title": "Food Service Worker",
+        "starting_salary": 24000,
+        "salary_growth": 0.025,
+        "max_salary": 32000,
+        "education_required": "High school diploma",
+        "description": "Restaurant and food preparation services",
+        "promotion_path": ["Line Cook", "Shift Leader", "Assistant Manager"],
+        "skills_developed": ["teamwork", "time management", "food safety"]
+      },
+      {
+        "title": "Security Officer",
+        "starting_salary": 32000,
+        "salary_growth": 0.035,
+        "max_salary": 45000,
+        "education_required": "High school diploma + certification",
+        "description": "Property and people protection services",
+        "promotion_path": ["Senior Officer", "Supervisor", "Security Manager"],
+        "skills_developed": ["attention to detail", "communication", "emergency response"]
+      },
+      {
+        "title": "Warehouse Associate",
+        "starting_salary": 28000,
+        "salary_growth": 0.04,
+        "max_salary": 42000,
+        "education_required": "High school diploma",
+        "description": "Inventory management and shipping operations",
+        "promotion_path": ["Lead Associate", "Supervisor", "Warehouse Manager"],
+        "skills_developed": ["logistics", "equipment operation", "safety protocols"]
+      },
+      {
+        "title": "Customer Service Representative",
+        "starting_salary": 30000,
+        "salary_growth": 0.045,
+        "max_salary": 48000,
+        "education_required": "High school diploma",
+        "description": "Handle customer inquiries and support",
+        "promotion_path": ["Senior Rep", "Team Leader", "Call Center Manager"],
+        "skills_developed": ["communication", "problem solving", "computer skills"]
+      }
+    ],
+    "associate_degree": [
+      {
+        "title": "Dental Hygienist",
+        "starting_salary": 58000,
+        "salary_growth": 0.03,
+        "max_salary": 78000,
+        "education_required": "Associate degree + license",
+        "description": "Dental care and patient education",
+        "promotion_path": ["Senior Hygienist", "Office Manager", "Practice Owner"],
+        "skills_developed": ["healthcare", "patient care", "technical skills"]
+      },
+      {
+        "title": "Air Traffic Controller",
+        "starting_salary": 65000,
+        "salary_growth": 0.04,
+        "max_salary": 95000,
+        "education_required": "Associate degree + FAA training",
+        "description": "Coordinate aircraft movements for safety",
+        "promotion_path": ["Senior Controller", "Supervisor", "Facility Manager"],
+        "skills_developed": ["precision", "stress management", "communication"]
+      },
+      {
+        "title": "Radiation Therapist",
+        "starting_salary": 62000,
+        "salary_growth": 0.045,
+        "max_salary": 88000,
+        "education_required": "Associate degree + certification",
+        "description": "Administer radiation treatments to patients",
+        "promotion_path": ["Senior Therapist", "Lead Therapist", "Department Supervisor"],
+        "skills_developed": ["healthcare", "technology", "patient care"]
+      },
+      {
+        "title": "Web Developer",
+        "starting_salary": 45000,
+        "salary_growth": 0.08,
+        "max_salary": 85000,
+        "education_required": "Associate degree or bootcamp",
+        "description": "Build and maintain websites and applications",
+        "promotion_path": ["Senior Developer", "Lead Developer", "Technical Manager"],
+        "skills_developed": ["programming", "problem solving", "creativity"]
+      }
+    ],
+    "trade_school": [
+      {
+        "title": "Electrician",
+        "starting_salary": 48000,
+        "salary_growth": 0.045,
+        "max_salary": 78000,
+        "education_required": "Trade school + apprenticeship",
+        "description": "Install and maintain electrical systems",
+        "promotion_path": ["Journeyman", "Master Electrician", "Electrical Contractor"],
+        "skills_developed": ["technical skills", "problem solving", "safety protocols"]
+      },
+      {
+        "title": "Plumber",
+        "starting_salary": 46000,
+        "salary_growth": 0.04,
+        "max_salary": 72000,
+        "education_required": "Trade school + apprenticeship",
+        "description": "Install and repair plumbing systems",
+        "promotion_path": ["Journeyman", "Master Plumber", "Plumbing Contractor"],
+        "skills_developed": ["manual skills", "customer service", "business management"]
+      },
+      {
+        "title": "HVAC Technician",
+        "starting_salary": 44000,
+        "salary_growth": 0.05,
+        "max_salary": 70000,
+        "education_required": "Trade school + certification",
+        "description": "Install and repair heating and cooling systems",
+        "promotion_path": ["Senior Technician", "Supervisor", "Service Manager"],
+        "skills_developed": ["technical skills", "customer service", "troubleshooting"]
+      },
+      {
+        "title": "Automotive Technician",
+        "starting_salary": 42000,
+        "salary_growth": 0.035,
+        "max_salary": 65000,
+        "education_required": "Trade school + ASE certification",
+        "description": "Diagnose and repair vehicles",
+        "promotion_path": ["Master Technician", "Shop Foreman", "Service Manager"],
+        "skills_developed": ["mechanical skills", "diagnostics", "customer relations"]
+      },
+      {
+        "title": "Welder",
+        "starting_salary": 40000,
+        "salary_growth": 0.04,
+        "max_salary": 68000,
+        "education_required": "Trade school + certification",
+        "description": "Join metals using various welding techniques",
+        "promotion_path": ["Certified Welder", "Welding Inspector", "Shop Supervisor"],
+        "skills_developed": ["precision", "safety", "quality control"]
+      }
+    ],
+    "bachelor_degree": [
+      {
+        "title": "Software Engineer",
+        "starting_salary": 72000,
+        "salary_growth": 0.08,
+        "max_salary": 150000,
+        "education_required": "Bachelor's degree in Computer Science",
+        "description": "Design and develop software applications",
+        "promotion_path": ["Senior Engineer", "Tech Lead", "Engineering Manager"],
+        "skills_developed": ["programming", "system design", "teamwork"]
+      },
+      {
+        "title": "Registered Nurse",
+        "starting_salary": 58000,
+        "salary_growth": 0.045,
+        "max_salary": 85000,
+        "education_required": "Bachelor's degree + RN license",
+        "description": "Provide medical care to patients",
+        "promotion_path": ["Charge Nurse", "Nurse Manager", "Director of Nursing"],
+        "skills_developed": ["healthcare", "critical thinking", "compassion"]
+      },
+      {
+        "title": "Accountant",
+        "starting_salary": 52000,
+        "salary_growth": 0.04,
+        "max_salary": 85000,
+        "education_required": "Bachelor's degree in Accounting",
+        "description": "Prepare and examine financial records",
+        "promotion_path": ["Senior Accountant", "Accounting Manager", "Controller"],
+        "skills_developed": ["analytical skills", "attention to detail", "ethics"]
+      },
+      {
+        "title": "Marketing Manager",
+        "starting_salary": 55000,
+        "salary_growth": 0.06,
+        "max_salary": 95000,
+        "education_required": "Bachelor's degree in Marketing",
+        "description": "Develop and execute marketing strategies",
+        "promotion_path": ["Senior Manager", "Marketing Director", "VP of Marketing"],
+        "skills_developed": ["creativity", "data analysis", "leadership"]
+      },
+      {
+        "title": "Teacher",
+        "starting_salary": 42000,
+        "salary_growth": 0.035,
+        "max_salary": 65000,
+        "education_required": "Bachelor's degree + teaching license",
+        "description": "Educate students in various subjects",
+        "promotion_path": ["Lead Teacher", "Department Head", "Principal"],
+        "skills_developed": ["communication", "patience", "organization"]
+      },
+      {
+        "title": "Civil Engineer",
+        "starting_salary": 65000,
+        "salary_growth": 0.055,
+        "max_salary": 110000,
+        "education_required": "Bachelor's degree in Engineering",
+        "description": "Design and oversee construction projects",
+        "promotion_path": ["Senior Engineer", "Project Manager", "Engineering Director"],
+        "skills_developed": ["problem solving", "project management", "technical skills"]
+      },
+      {
+        "title": "Financial Analyst",
+        "starting_salary": 58000,
+        "salary_growth": 0.065,
+        "max_salary": 105000,
+        "education_required": "Bachelor's degree in Finance",
+        "description": "Analyze financial data and investment opportunities",
+        "promotion_path": ["Senior Analyst", "Portfolio Manager", "Finance Director"],
+        "skills_developed": ["analytical skills", "financial modeling", "research"]
+      },
+      {
+        "title": "Human Resources Specialist",
+        "starting_salary": 48000,
+        "salary_growth": 0.05,
+        "max_salary": 78000,
+        "education_required": "Bachelor's degree in HR or related field",
+        "description": "Manage employee relations and company policies",
+        "promotion_path": ["HR Generalist", "HR Manager", "HR Director"],
+        "skills_developed": ["interpersonal skills", "conflict resolution", "business knowledge"]
+      }
+    ],
+    "military_specializations": [
+      {
+        "title": "Military Intelligence",
+        "starting_salary": 32000,
+        "salary_growth": 0.06,
+        "max_salary": 65000,
+        "post_service_skills": ["security clearance", "analysis", "technology"],
+        "civilian_transition": "Intelligence Analyst"
+      },
+      {
+        "title": "Military Police",
+        "starting_salary": 30000,
+        "salary_growth": 0.05,
+        "max_salary": 55000,
+        "post_service_skills": ["law enforcement", "leadership", "security"],
+        "civilian_transition": "Police Officer"
+      },
+      {
+        "title": "Aviation Maintenance",
+        "starting_salary": 35000,
+        "salary_growth": 0.055,
+        "max_salary": 68000,
+        "post_service_skills": ["aircraft maintenance", "technical skills", "safety"],
+        "civilian_transition": "Aircraft Mechanic"
+      },
+      {
+        "title": "Information Technology",
+        "starting_salary": 38000,
+        "salary_growth": 0.07,
+        "max_salary": 75000,
+        "post_service_skills": ["cybersecurity", "network administration", "technical support"],
+        "civilian_transition": "IT Specialist"
+      }
+    ],
+    "entrepreneurship": [
+      {
+        "title": "E-commerce Business",
+        "startup_cost": 5000,
+        "time_to_profit": 8,
+        "success_rate": 0.35,
+        "max_income": 200000,
+        "description": "Online retail business"
+      },
+      {
+        "title": "Food Truck",
+        "startup_cost": 75000,
+        "time_to_profit": 12,
+        "success_rate": 0.40,
+        "max_income": 150000,
+        "description": "Mobile food service"
+      },
+      {
+        "title": "Freelance Services",
+        "startup_cost": 2000,
+        "time_to_profit": 3,
+        "success_rate": 0.60,
+        "max_income": 100000,
+        "description": "Consulting or creative services"
+      },
+      {
+        "title": "Tech Startup",
+        "startup_cost": 25000,
+        "time_to_profit": 18,
+        "success_rate": 0.15,
+        "max_income": 1000000,
+        "description": "Technology-based business"
+      }
+    ]
+  },
+  "life_events": {
+    "positive_events": [
+      {
+        "name": "Work Bonus",
+        "description": "Excellent performance earned you a bonus!",
+        "cash_impact": [200, 800],
+        "wellbeing_impact": [8, 12],
+        "probability": 0.08,
+        "conditions": ["has_income"]
+      },
+      {
+        "name": "Tax Refund",
+        "description": "You received a tax refund!",
+        "cash_impact": [300, 1200],
+        "wellbeing_impact": [5, 8],
+        "probability": 0.06,
+        "conditions": ["has_income"]
+      },
+      {
+        "name": "Inheritance",
+        "description": "A relative left you money in their will.",
+        "cash_impact": [1000, 5000],
+        "wellbeing_impact": [10, 15],
+        "probability": 0.02,
+        "conditions": []
+      },
+      {
+        "name": "Scholarship Award",
+        "description": "You won a merit-based scholarship!",
+        "cash_impact": [500, 2000],
+        "debt_reduction": [1000, 3000],
+        "wellbeing_impact": [15, 20],
+        "probability": 0.03,
+        "conditions": ["is_student", "good_grades"]
+      },
+      {
+        "name": "Job Promotion",
+        "description": "Congratulations! You got promoted.",
+        "salary_increase": [0.10, 0.25],
+        "wellbeing_impact": [15, 25],
+        "probability": 0.04,
+        "conditions": ["has_job", "good_performance"]
+      },
+      {
+        "name": "Side Gig Success",
+        "description": "Your side project is bringing in extra money!",
+        "monthly_income_boost": [200, 600],
+        "wellbeing_impact": [10, 15],
+        "probability": 0.05,
+        "conditions": ["entrepreneurial"]
+      }
+    ],
+    "negative_events": [
+      {
+        "name": "Car Repair",
+        "description": "Your car needs unexpected repairs.",
+        "cash_impact": [300, 1200],
+        "wellbeing_impact": [-5, -10],
+        "probability": 0.12,
+        "conditions": ["owns_car"]
+      },
+      {
+        "name": "Medical Emergency",
+        "description": "Unexpected medical expenses.",
+        "cash_impact": [500, 2500],
+        "wellbeing_impact": [-8, -15],
+        "probability": 0.08,
+        "conditions": []
+      },
+      {
+        "name": "Identity Theft",
+        "description": "Someone stole your identity and made purchases.",
+        "cash_impact": [200, 800],
+        "credit_score_impact": [-30, -50],
+        "wellbeing_impact": [-10, -15],
+        "probability": 0.03,
+        "conditions": ["has_credit_card"]
+      },
+      {
+        "name": "Job Loss",
+        "description": "You were laid off due to company downsizing.",
+        "income_loss_months": [2, 6],
+        "wellbeing_impact": [-20, -30],
+        "probability": 0.04,
+        "conditions": ["has_job"]
+      },
+      {
+        "name": "Apartment Damage",
+        "description": "Accidental damage to your apartment.",
+        "cash_impact": [400, 1500],
+        "wellbeing_impact": [-5, -12],
+        "probability": 0.06,
+        "conditions": ["rents_apartment"]
+      },
+      {
+        "name": "Phone/Laptop Broken",
+        "description": "Your essential device broke and needs replacement.",
+        "cash_impact": [200, 800],
+        "wellbeing_impact": [-3, -8],
+        "probability": 0.10,
+        "conditions": []
+      }
+    ],
+    "neutral_events": [
+      {
+        "name": "Friend's Wedding",
+        "description": "Your friend is getting married!",
+        "cash_impact": [200, 600],
+        "wellbeing_impact": [8, 15],
+        "probability": 0.05,
+        "conditions": []
+      },
+      {
+        "name": "Moving Expenses",
+        "description": "You decided to move to a better place.",
+        "cash_impact": [800, 2000],
+        "wellbeing_impact": [5, 10],
+        "probability": 0.08,
+        "conditions": []
+      },
+      {
+        "name": "Family Visit",
+        "description": "Family is visiting - time to show them around!",
+        "cash_impact": [150, 400],
+        "wellbeing_impact": [10, 18],
+        "probability": 0.06,
+        "conditions": []
+      }
+    ]
+  },
+  "investment_market_scenarios": [
+    {
+      "name": "Bull Market",
+      "description": "Strong economic growth boosts investments",
+      "duration_months": [6, 18],
+      "stock_multiplier": [1.15, 1.35],
+      "bond_multiplier": [1.02, 1.08],
+      "probability": 0.3
+    },
+    {
+      "name": "Bear Market",
+      "description": "Economic downturn hurts investment values",
+      "duration_months": [3, 12],
+      "stock_multiplier": [0.70, 0.90],
+      "bond_multiplier": [0.95, 1.02],
+      "probability": 0.2
+    },
+    {
+      "name": "Market Correction",
+      "description": "Short-term market adjustment",
+      "duration_months": [1, 4],
+      "stock_multiplier": [0.85, 0.95],
+      "bond_multiplier": [0.98, 1.01],
+      "probability": 0.25
+    },
+    {
+      "name": "Stable Market",
+      "description": "Normal market conditions",
+      "duration_months": [12, 24],
+      "stock_multiplier": [0.95, 1.12],
+      "bond_multiplier": [1.00, 1.05],
+      "probability": 0.25
+    }
+  ]
+}

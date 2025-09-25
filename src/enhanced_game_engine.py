@@ -60,6 +60,13 @@ class GameState:
         self.goals_completed: List[str] = []
         self.achievements_earned: List[str] = []
         
+        # Enhanced features for Phase 2
+        self.vehicle: Optional[str] = None
+        self.vehicle_condition: int = 100
+        self.part_time_job: Optional[str] = None
+        self.debt: float = 0.0
+        self.career_started: bool = False
+        
         # Game Metadata
         self.save_date: str = ""
         self.total_playtime: int = 0
@@ -127,6 +134,11 @@ class GameState:
             "wellbeing_score": self.wellbeing_score,
             "goals_completed": self.goals_completed,
             "achievements_earned": self.achievements_earned,
+            "vehicle": self.vehicle,
+            "vehicle_condition": self.vehicle_condition,
+            "part_time_job": self.part_time_job,
+            "debt": self.debt,
+            "career_started": self.career_started,
             "save_date": self.save_date,
             "total_playtime": self.total_playtime
         }
@@ -287,20 +299,315 @@ Press Enter to return to main menu...
         self.continue_game()
     
     def continue_game(self):
-        """Continue with monthly simulation"""
-        months_to_play = 12  # Play for 1 year in this version
+        """Enhanced simulation with complex decision-making"""
+        # Vehicle decision if player is old enough and doesn't have one
+        if self.state.player_age >= 16 and not hasattr(self.state, 'vehicle'):
+            self.vehicle_decision()
         
-        for month in range(1, months_to_play + 1):
-            self.simulate_month()
-            
-            if month < months_to_play:
-                continue_choice = self.ui.get_input(
-                    "\nContinue to next month? (y/n): ", ["y", "n", "yes", "no"]
-                )
-                if continue_choice.lower() not in ["y", "yes"]:
-                    break
+        # Part-time job consideration for students
+        if self.state.education_path in ["Community college", "4-Year University", "Trade School"]:
+            self.part_time_job_decision()
+        
+        # Enhanced monthly simulation with time scaling
+        self.enhanced_monthly_simulation()
         
         self.end_game()
+    
+    def enhanced_monthly_simulation(self):
+        """Enhanced simulation with time scaling and complex decisions"""
+        current_month = 1
+        target_months = GameConfig.SIMULATION_LENGTH_MONTHS  # From config (36 months)
+        
+        while current_month <= target_months:
+            # Show current month and age
+            age_in_months = (self.state.player_age * 12) + current_month
+            current_age = age_in_months // 12
+            self.state.player_age = current_age  # Update player age
+            
+            self.ui.display_header(f"MONTH {current_month} - AGE {current_age}")
+            
+            # Regular monthly simulation
+            self.simulate_month()
+            
+            # Time scaling decision every few months
+            if current_month % 3 == 0 and current_month < target_months:
+                time_choice = self.time_scaling_decision(current_month, target_months)
+                if time_choice > 1:
+                    # Skip ahead with simplified simulation
+                    months_to_skip = min(time_choice, target_months - current_month)
+                    self.skip_time_period(months_to_skip)
+                    current_month += months_to_skip
+                else:
+                    current_month += 1
+            else:
+                current_month += 1
+            
+            # Check for major life stage transitions
+            if current_age >= 22 and not hasattr(self.state, 'career_started'):
+                self.career_transition()
+                self.state.career_started = True
+            
+            # Vehicle upgrade decision every 2 years
+            if current_month % 24 == 0 and hasattr(self.state, 'vehicle'):
+                self.vehicle_upgrade_decision()
+    
+    def time_scaling_decision(self, current_month: int, target_months: int) -> int:
+        """Let player choose how much time to skip"""
+        remaining_months = target_months - current_month
+        
+        self.ui.display_text("\n⏰ TIME MANAGEMENT", "info")
+        self.ui.display_text("How would you like to proceed with time?")
+        
+        options = []
+        if remaining_months > 0:
+            options.append("Continue month by month")
+        if remaining_months >= 3:
+            options.append("Skip ahead 3 months (quick progress)")
+        if remaining_months >= 6:
+            options.append("Skip ahead 6 months (fast progress)")
+        
+        choice = self.ui.display_menu("Time Options", options)
+        
+        if choice == "1":
+            return 1
+        elif choice == "2" and len(options) >= 2:
+            return 3
+        elif choice == "3" and len(options) >= 3:
+            return 6
+        else:
+            return 1
+    
+    def skip_time_period(self, months: int):
+        """Simulate multiple months quickly"""
+        self.ui.display_text(f"\n⏩ Skipping ahead {months} months...", "info")
+        
+        for month in range(months):
+            # Simplified month simulation
+            self.state.game_month += 1
+            
+            # Basic income and expenses
+            net_income = self.state.monthly_income - sum(self.state.monthly_expenses.values())
+            self.state.cash += net_income
+            
+            # Small chance of events during skip
+            if random.random() < 0.1:  # 10% chance per month
+                self.quick_random_event()
+            
+            # Part-time job income if applicable
+            if hasattr(self.state, 'part_time_job') and self.state.part_time_job:
+                part_time_income = GameConfig.PART_TIME_JOB_WAGES.get(self.state.part_time_job, 0)
+                self.state.cash += part_time_income
+        
+        # Show summary of skip period
+        self.ui.display_text(f"📊 Summary of {months} months:", "info")
+        self.ui.display_text(f"   Current cash: ${self.state.cash:,.2f}")
+        if hasattr(self.state, 'vehicle'):
+            self.ui.display_text(f"   Vehicle condition: {self.get_vehicle_condition()}")
+        self.ui.pause_for_input()
+    
+    def vehicle_decision(self):
+        """Let player choose a vehicle"""
+        self.ui.display_header("VEHICLE DECISION")
+        self.ui.display_text("You need to decide about transportation.")
+        self.ui.display_text("Having a car gives you more job opportunities but costs money.")
+        
+        # Show vehicle options based on player's cash
+        affordable_vehicles = []
+        for vehicle_id, vehicle in GameConfig.VEHICLE_OPTIONS.items():
+            if vehicle['purchase_cost'] <= self.state.cash * 1.2:  # Allow slight stretching
+                affordable_vehicles.append((vehicle_id, vehicle))
+        
+        options = ["No vehicle (walk/bike/public transport)"]
+        for vehicle_id, vehicle in affordable_vehicles:
+            cost_text = f"${vehicle['purchase_cost']:,}"
+            monthly_text = f"${vehicle['monthly_cost']:,}/month"
+            options.append(f"{vehicle['name']} - {cost_text} ({monthly_text})")
+        
+        choice = self.ui.display_menu("Transportation Options", options)
+        
+        if choice == "1":
+            self.state.vehicle = None
+            self.ui.display_text("You decided to rely on alternative transportation.", "info")
+        else:
+            vehicle_index = int(choice) - 2
+            if 0 <= vehicle_index < len(affordable_vehicles):
+                vehicle_id, vehicle = affordable_vehicles[vehicle_index]
+                
+                if vehicle['purchase_cost'] > self.state.cash:
+                    self.ui.display_text("You'll need to take a loan for this vehicle.", "warning")
+                    loan_amount = vehicle['purchase_cost'] - self.state.cash
+                    self.state.cash = 0
+                    self.state.debt = getattr(self.state, 'debt', 0) + loan_amount
+                else:
+                    self.state.cash -= vehicle['purchase_cost']
+                
+                self.state.vehicle = vehicle_id
+                self.state.vehicle_condition = 100  # Start with perfect condition
+                self.state.monthly_expenses['transportation'] += vehicle['monthly_cost']
+                
+                self.ui.display_text(f"You bought a {vehicle['name']}!", "success")
+                self.ui.display_text(f"Monthly costs: ${vehicle['monthly_cost']:,}", "info")
+        
+        self.ui.pause_for_input()
+    
+    def part_time_job_decision(self):
+        """Let student decide about part-time work"""
+        self.ui.display_header("PART-TIME JOB OPPORTUNITY")
+        self.ui.display_text("As a student, you can work part-time to earn extra money.")
+        self.ui.display_text("However, working too much might affect your grades!")
+        
+        # Show available part-time jobs
+        available_jobs = []
+        for job_id, job_info in GameConfig.PART_TIME_JOBS.items():
+            education_req = job_info.get('education_compatible', [])
+            if not education_req or self.state.education_path in education_req:
+                available_jobs.append((job_id, job_info))
+        
+        options = ["Focus only on studies (no part-time job)"]
+        for job_id, job_info in available_jobs:
+            wage_text = f"${job_info['hourly_wage']}/hour"
+            hours_text = f"~{job_info['max_hours_per_week']} hours/week"
+            options.append(f"{job_info['title']} - {wage_text} ({hours_text})")
+        
+        choice = self.ui.display_menu("Part-time Job Options", options)
+        
+        if choice == "1":
+            self.state.part_time_job = None
+            self.ui.display_text("You decided to focus entirely on your studies.", "info")
+        else:
+            job_index = int(choice) - 2
+            if 0 <= job_index < len(available_jobs):
+                job_id, job_info = available_jobs[job_index]
+                self.state.part_time_job = job_id
+                
+                # Calculate monthly income (assuming 4 weeks per month)
+                weekly_income = job_info['hourly_wage'] * job_info['max_hours_per_week']
+                monthly_income = weekly_income * 4
+                
+                self.state.monthly_income += monthly_income
+                self.ui.display_text(f"You got a job as a {job_info['title']}!", "success")
+                self.ui.display_text(f"Additional monthly income: ${monthly_income:,}", "success")
+                
+                # Slight impact on wellbeing due to busy schedule
+                self.state.wellbeing_score -= 5
+                self.ui.display_text("Your schedule is busier now, affecting your free time.", "warning")
+        
+        self.ui.pause_for_input()
+    
+    def get_vehicle_condition(self) -> str:
+        """Get vehicle condition description"""
+        if not hasattr(self.state, 'vehicle') or not self.state.vehicle:
+            return "No vehicle"
+        
+        condition = self.state.vehicle_condition
+        if condition >= 90:
+            return "Excellent"
+        elif condition >= 75:
+            return "Good"
+        elif condition >= 50:
+            return "Fair"
+        elif condition >= 25:
+            return "Poor"
+        else:
+            return "Very Poor"
+    
+    def quick_random_event(self):
+        """Simplified random event for time skips"""
+        events = [
+            {"name": "Minor expense", "cost": random.randint(50, 200)},
+            {"name": "Small windfall", "cost": -random.randint(100, 300)},
+            {"name": "Vehicle maintenance", "cost": random.randint(100, 400), "requires_vehicle": True}
+        ]
+        
+        available_events = []
+        for event in events:
+            if event.get("requires_vehicle") and not hasattr(self.state, 'vehicle'):
+                continue
+            available_events.append(event)
+        
+        if available_events:
+            event = random.choice(available_events)
+            self.state.cash -= event['cost']
+    
+    def career_transition(self):
+        """Handle transition from education to career"""
+        self.ui.display_header("CAREER TRANSITION")
+        self.ui.display_text("You're ready to start your career!", "success")
+        
+        # Load expanded career data
+        try:
+            with open('data/expanded_content.json', 'r') as f:
+                career_data = json.load(f)
+        except FileNotFoundError:
+            self.ui.display_text("Career data not found, using basic options.", "warning")
+            return
+        
+        # Select appropriate career options based on education
+        education_to_career = {
+            "High School": "high_school_entry",
+            "Community College": "associate_degree", 
+            "Trade School": "trade_school",
+            "4-Year University": "bachelor_degree",
+            "Military Service": "military_specializations"
+        }
+        
+        career_category = education_to_career.get(self.state.education_path, "high_school_entry")
+        available_careers = career_data.get("expanded_careers", {}).get(career_category, [])
+        
+        if available_careers:
+            options = []
+            for career in available_careers[:5]:  # Show top 5 options
+                options.append(f"{career['title']} - Starting: ${career['starting_salary']:,}/year")
+            
+            choice = self.ui.display_menu("Career Options", options)
+            selected_career = available_careers[int(choice) - 1]
+            
+            self.state.career = selected_career['title']
+            self.state.monthly_income = selected_career['starting_salary'] / 12
+            
+            self.ui.display_text(f"Congratulations! You're now a {selected_career['title']}!", "success")
+            self.ui.display_text(f"Starting salary: ${selected_career['starting_salary']:,}/year", "info")
+            
+            # Remove part-time job if transitioning to full-time career
+            if hasattr(self.state, 'part_time_job') and self.state.part_time_job:
+                self.state.part_time_job = None
+                self.ui.display_text("You've left your part-time job for your career.", "info")
+    
+    def vehicle_upgrade_decision(self):
+        """Let player decide whether to upgrade their vehicle"""
+        if not hasattr(self.state, 'vehicle') or not self.state.vehicle:
+            return
+        
+        current_vehicle = GameConfig.VEHICLE_OPTIONS.get(self.state.vehicle)
+        if not current_vehicle:
+            return
+        
+        self.ui.display_header("VEHICLE DECISION")
+        self.ui.display_text(f"Your {current_vehicle['name']} is getting older.")
+        self.ui.display_text(f"Current condition: {self.get_vehicle_condition()}")
+        
+        # Vehicle condition decreases over time
+        self.state.vehicle_condition -= random.randint(5, 15)
+        
+        if self.state.vehicle_condition < 50:
+            self.ui.display_text("Your vehicle is becoming unreliable and may need replacement soon.", "warning")
+        
+        options = [
+            "Keep current vehicle",
+            "Upgrade to a newer vehicle",
+            "Sell vehicle and go without"
+        ]
+        
+        choice = self.ui.display_menu("Vehicle Options", options)
+        
+        if choice == "2":  # Upgrade
+            self.vehicle_decision()  # Reuse vehicle selection logic
+        elif choice == "3":  # Sell
+            sale_value = max(1000, current_vehicle['purchase_cost'] * 0.3)  # Depreciated value
+            self.state.cash += sale_value
+            self.state.vehicle = None
+            self.state.monthly_expenses['transportation'] -= current_vehicle['monthly_cost']
+            self.ui.display_text(f"You sold your vehicle for ${sale_value:,}", "success")
     
     def simulate_month(self):
         """Simulate one month"""
@@ -414,15 +721,45 @@ Press Enter to return to main menu...
             self.ui.display_text("Balanced approach! You split your money wisely.", "success")
     
     def random_event(self):
-        """Generate random life event"""
-        events = [
+        """Generate random life event using expanded content"""
+        # Try to load expanded events
+        try:
+            with open('data/expanded_content.json', 'r') as f:
+                content_data = json.load(f)
+            
+            # Choose event type based on probability
+            event_roll = random.random()
+            if event_roll < 0.4:  # 40% chance positive
+                event_pool = content_data.get("life_events", {}).get("positive_events", [])
+            elif event_roll < 0.8:  # 40% chance negative  
+                event_pool = content_data.get("life_events", {}).get("negative_events", [])
+            else:  # 20% chance neutral
+                event_pool = content_data.get("life_events", {}).get("neutral_events", [])
+            
+            # Filter events based on conditions
+            available_events = []
+            for event in event_pool:
+                conditions = event.get("conditions", [])
+                if self.check_event_conditions(conditions):
+                    available_events.append(event)
+            
+            if available_events:
+                event = random.choice(available_events)
+                self.process_expanded_event(event)
+                return
+                
+        except (FileNotFoundError, json.JSONDecodeError, KeyError):
+            pass  # Fall back to basic events
+        
+        # Basic fallback events
+        basic_events = [
             {"name": "Car Repair", "description": "Your car needs $500 in repairs.", "cost": 500, "wellbeing": -5},
             {"name": "Work Bonus", "description": "Great job! You got a $300 bonus.", "cost": -300, "wellbeing": 10},
             {"name": "Medical Bill", "description": "Doctor visit cost $200.", "cost": 200, "wellbeing": -3},
             {"name": "Tax Refund", "description": "You got a $400 tax refund!", "cost": -400, "wellbeing": 5}
         ]
         
-        event = random.choice(events)
+        event = random.choice(basic_events)
         
         self.ui.display_text(f"\n🎲 RANDOM EVENT: {event['name']}", "info")
         self.ui.display_text(f"   {event['description']}")
@@ -434,6 +771,75 @@ Press Enter to return to main menu...
             self.ui.display_text(f"   Cost: ${event['cost']:,.2f}", "warning")
         else:
             self.ui.display_text(f"   Gained: ${abs(event['cost']):,.2f}", "success")
+    
+    def check_event_conditions(self, conditions: List[str]) -> bool:
+        """Check if player meets event conditions"""
+        for condition in conditions:
+            if condition == "has_income" and self.state.monthly_income <= 0:
+                return False
+            elif condition == "owns_car" and not hasattr(self.state, 'vehicle'):
+                return False
+            elif condition == "has_job" and not self.state.career and not hasattr(self.state, 'part_time_job'):
+                return False
+            elif condition == "is_student" and self.state.education_path not in ["Community College", "4-Year University", "Trade School"]:
+                return False
+            elif condition == "has_credit_card" and self.state.credit_score < 500:
+                return False
+            elif condition == "rents_apartment" and self.state.monthly_expenses.get("housing", 0) > 0:
+                return False
+        return True
+    
+    def process_expanded_event(self, event: Dict):
+        """Process an expanded event with complex effects"""
+        self.ui.display_text(f"\n🎲 RANDOM EVENT: {event['name']}", "info")
+        self.ui.display_text(f"   {event['description']}")
+        
+        # Handle cash impact
+        if "cash_impact" in event:
+            impact_range = event["cash_impact"]
+            min_val, max_val = min(impact_range), max(impact_range)
+            cash_change = random.randint(min_val, max_val)
+            self.state.cash -= cash_change
+            
+            if cash_change > 0:
+                self.ui.display_text(f"   Cost: ${cash_change:,.2f}", "warning")
+            else:
+                self.ui.display_text(f"   Gained: ${abs(cash_change):,.2f}", "success")
+        
+        # Handle wellbeing impact
+        if "wellbeing_impact" in event:
+            wellbeing_range = event["wellbeing_impact"]
+            min_val, max_val = min(wellbeing_range), max(wellbeing_range)
+            wellbeing_change = random.randint(min_val, max_val)
+            self.state.wellbeing_score += wellbeing_change
+            
+            if wellbeing_change > 0:
+                self.ui.display_text(f"   Wellbeing improved by {wellbeing_change}", "success")
+            else:
+                self.ui.display_text(f"   Wellbeing decreased by {abs(wellbeing_change)}", "warning")
+        
+        # Handle special effects
+        if "debt_reduction" in event:
+            reduction_range = event["debt_reduction"]
+            reduction = random.randint(reduction_range[0], reduction_range[1])
+            if self.state.education_debt > 0:
+                actual_reduction = min(reduction, self.state.education_debt)
+                self.state.education_debt -= actual_reduction
+                self.ui.display_text(f"   Student loan reduced by ${actual_reduction:,.2f}!", "success")
+        
+        if "salary_increase" in event:
+            increase_range = event["salary_increase"]
+            increase_percent = random.uniform(increase_range[0], increase_range[1])
+            old_income = self.state.monthly_income
+            self.state.monthly_income *= (1 + increase_percent)
+            increase_amount = self.state.monthly_income - old_income
+            self.ui.display_text(f"   Monthly income increased by ${increase_amount:,.2f}!", "success")
+        
+        if "credit_score_impact" in event:
+            impact_range = event["credit_score_impact"]
+            score_change = random.randint(impact_range[0], impact_range[1])
+            self.state.credit_score += score_change
+            self.state.credit_score = max(300, min(850, self.state.credit_score))  # Keep in valid range
     
     def play_random_minigame(self):
         """Play a random mini-game"""

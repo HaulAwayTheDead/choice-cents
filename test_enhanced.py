@@ -58,10 +58,38 @@ def test_game_state():
     print(f"Net worth: ${state.get_net_worth()}")
     print(f"Monthly cash flow: ${state.get_monthly_cash_flow()}")
     
+    # Test new enhanced attributes
+    print(f"Vehicle: {state.vehicle}")
+    print(f"Vehicle condition: {state.vehicle_condition}")
+    print(f"Part-time job: {state.part_time_job}")
+    print(f"Additional debt: {state.debt}")
+    print(f"Career started: {state.career_started}")
+    
     # Test achievements
     state.monthly_income = 2000
     new_achievements = state.check_achievements()
     print(f"New achievements: {new_achievements}")
+    print()
+
+def test_enhanced_config():
+    """Test enhanced configuration features"""
+    print("Testing Enhanced Configuration...")
+    print(f"Simulation length: {GameConfig.SIMULATION_LENGTH_MONTHS} months")
+    print(f"Time skip options: {GameConfig.TIME_SKIP_OPTIONS}")
+    print(f"Vehicle options: {len(GameConfig.VEHICLE_OPTIONS)} available")
+    print(f"Part-time jobs: {len(GameConfig.PART_TIME_JOBS)} available")
+    from config import Achievements, GameText
+    print(f"Education paths: {len(GameText.EDUCATION_PATHS)} available")
+    print(f"Achievements: {len(Achievements.ACHIEVEMENT_LIST)} available")
+    
+    # Show some examples
+    print("\nSample Vehicle Options:")
+    for vehicle_id, vehicle in list(GameConfig.VEHICLE_OPTIONS.items())[:3]:
+        print(f"  - {vehicle['name']}: ${vehicle['purchase_cost']:,} (${vehicle['monthly_cost']}/mo)")
+    
+    print("\nSample Part-time Jobs:")
+    for job_id, job in list(GameConfig.PART_TIME_JOBS.items())[:3]:
+        print(f"  - {job['title']}: ${job['hourly_wage']}/hr, {job['max_hours_per_week']}hrs/week")
     print()
 
 def main():
@@ -73,6 +101,7 @@ def main():
     test_config()
     test_ui()
     test_game_state()
+    test_enhanced_config()
     
     print("All tests completed!")
     print("If you see this message, the enhanced engine is ready to run.")
