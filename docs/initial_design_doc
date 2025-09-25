@@ -1,0 +1,175 @@
+Plan and Roadmap for a Text-Based Personal Finance Game
+1. Vision and Purpose
+
+Personal finance education helps young people develop lifelong habits such as budgeting, saving, investing and avoiding debt. Unfortunately, U.S. teens score poorly on financial literacy tests—one survey of nearly 7,000 people ages 15‑18 found that their average personal finance knowledge score was only 64.9 %, and more than 72 % of students said money stresses them out
+fitzsimonscu.com
+. These gaps persist despite the fact that 21 states now require a personal finance course for high‑school graduation
+fitzsimonscu.com
+. Game‑based learning is recognised as an engaging way to teach financial decision‑making; interactive games allow students to learn from their own choices
+edutopia.org
+ and can improve critical thinking when paired with reflection questions
+ngpf.org
+.
+
+The proposed game aims to leverage these insights to help middle‑ and high‑school students understand the financial consequences of their choices. It will let players explore different post‑high‑school paths (college, trade school, immediate employment, entrepreneurship) and learn to manage income and expenses while working toward life goals such as buying a car, starting a family or achieving early retirement. By simulating realistic wages, costs of living and investment options, the game will demonstrate how consistent savings and sound financial decisions can lead to long‑term stability and enjoyment.
+
+Working Title
+
+ChoiceCents: Your Money Journey – a play on choices and cents that highlights decision‑making about money. The subtitle underscores the game’s narrative focus on a life‑long journey.
+
+2. Learning Objectives
+
+Budgeting and spending – allocate income toward needs (housing, food, transportation), wants, taxes and savings.
+
+Income and employment – compare salaries for various careers, understand wage growth and the impact of education/training on earnings.
+
+Cost of post‑secondary education – weigh the costs and benefits of college vs. trade school vs. entering the workforce. The “Payback” game illustrates these issues by nudging players to balance academics, work and social life while controlling student debt
+edutopia.org
+.
+
+Credit and debt management – learn about credit scores, loan terms and interest; avoid predatory lending (similar to Shady Sam
+edutopia.org
+) and understand the consequences of borrowing.
+
+Saving and investing – build emergency funds and explore investment vehicles (savings accounts, stocks, index funds) to grow wealth; practise asset allocation and risk management.
+
+Insurance and taxes – comprehend payroll deductions, insurance needs (health, auto, renters) and tax obligations.
+
+Long‑term planning – set short‑ and long‑term goals (buying a house, early retirement, travel) and plan to achieve them through budgeting and investing.
+
+Ethics and consumer awareness – recognise marketing tactics, scams and predatory loans; practise comparison shopping.
+
+These objectives align with National Standards for Personal Finance Education and reflect topics identified by educational resources such as the NGPF’s games (budgeting, credit, buying a car, insurance, investing)
+ngpf.org
+.
+
+3. Game Concept and Narrative
+
+ChoiceCents will be a text‑based interactive fiction game. Players create an avatar—choosing a name, basic background and life goals. The game unfolds over several chapters representing life stages: the end of high school, early career, mid‑career and later life. In each chapter, players face decisions that affect both their finances and “well‑being score,” balancing fun with financial responsibility.
+
+Key Narrative Mechanics
+
+Post‑high‑school paths: At graduation, players choose among attending a four‑year college, community college/trade program, entering the workforce, joining the military or starting a business. Each path has different costs, debt, time commitments and income potential, reflecting the real‑world trade‑offs highlighted in Payback
+edutopia.org
+ and The Uber Game
+fitzsimonscu.com
+.
+
+Career progression: Players select a career and can pursue promotions, certifications or job changes. Their income evolves with experience and education. Unpredictable job market events (e.g., economic downturns) create variability.
+
+Budgeting and lifestyle choices: Each month (or turn), players allocate their paycheck toward mandatory expenses (rent/mortgage, utilities, groceries, transportation), discretionary spending (entertainment, hobbies), debt payments and savings. They can choose modes of transportation—owning a car or using public transit—similar to PersonalFinanceLab’s Public Transit Mode update
+personalfinancelab.com
+.
+
+Mini‑games and challenges: To keep gameplay engaging and teach specific skills, optional mini‑games appear periodically:
+
+Comparison shopping – players choose the best value among product options (modelled after PersonalFinanceLab’s “Comparison Shopping” mini‑game
+personalfinancelab.com
+).
+
+Weekend planning – allocate a leisure budget across activities while staying under a cap
+personalfinancelab.com
+.
+
+Investment simulation – decide between different investment vehicles; watch how index funds generally outperform frequent trading, echoing the STAX game’s lesson
+edutopia.org
+.
+
+Random life events: Unexpected events (e.g., car breakdown, medical bills, surprise bonus) test players’ emergency funds and insurance coverage. These events encourage saving and risk management.
+
+Metrics and feedback: At the end of each chapter, players receive a summary of their net worth, debt level, credit score, happiness index and progress toward goals. Reflection prompts encourage them to think critically about their choices and connect them to real‑world lessons, akin to NGPF’s emphasis on pairing games with worksheets and reflection questions
+ngpf.org
+.
+
+Multiple endings: Depending on decisions, players may achieve financial freedom early, retire at a traditional age or struggle with debt. The game will emphasise that there is no single “correct” path; rather, thoughtful planning increases the likelihood of meeting one’s goals.
+
+4. Game Mechanics and Technical Design
+
+Text‑based interface: Initially, the game will run in the terminal/console (Python or Node.js), making it accessible and easy to test. A future release could be ported to a web‑based interface for broader reach.
+
+Decision trees: The narrative will be implemented as branching decision trees stored in data structures (e.g., JSON). Each node contains descriptive text, choices, and outcomes that modify player statistics.
+
+State management: The game will maintain variables for income, expenses, cash balance, savings, investments, debt, credit score and well‑being. Functions will update these values based on player decisions and random events.
+
+Financial realism: Budgets and incomes will use realistic values based on U.S. averages, adjusted for region (e.g., cost of living in Indiana). For example, typical monthly rent, car insurance, and starting salaries for different careers will be researched and programmed into the game. Tax calculations will use simplified versions of U.S. federal and state tax brackets.
+
+Difficulty and customization: Players or teachers can choose difficulty levels (e.g., simplified budgets for younger students vs. detailed budgets including insurance and taxes). The game will support saving and loading progress, plus accessibility features such as text‑to‑speech in later releases.
+
+Modularity: The narrative, mini‑games and events will be stored in separate modules so that new scenarios can easily be added (e.g., an entrepreneurship expansion pack). Translation support will be considered, inspired by PersonalFinanceLab’s expansion into multiple languages
+personalfinancelab.com
+.
+
+5. Development Roadmap
+Phase 1 – Research & Curriculum Design (Weeks 1‑2)
+
+Curriculum alignment: Compile learning objectives and ensure they cover budgeting, credit, investing, insurance, taxes and post‑secondary planning. Reference national/state standards and incorporate best practices from existing games like Payback
+edutopia.org
+, Shady Sam
+edutopia.org
+ and STAX
+edutopia.org
+.
+
+Data gathering: Collect data on average incomes, tuition costs, living expenses and typical loan interest rates. Use credible sources (BLS, government statistics) for accuracy.
+
+Story and character design: Outline the narrative arcs, characters and decision points. Brainstorm names and refine the game’s title (ChoiceCents).
+
+Technical planning: Select a programming language (initially Python for console prototype). Design data structures for game state and decision trees.
+
+Phase 2 – Prototype Development (Weeks 3‑6)
+
+MVP construction: Implement the core game loop in the console. Include character creation, choice of post‑high‑school path, monthly budgeting with income and expenses, and basic feedback summaries.
+
+Initial chapters: Build the high‑school graduation and early adulthood chapters with limited branching options. Integrate a simple budgeting mini‑game.
+
+Basic random events: Introduce a few random events (e.g., minor car repair, small bonus) to test emergency fund dynamics.
+
+Internal testing: Conduct internal playtests to check for bugs, balance incomes vs. expenses and ensure the narrative flows logically.
+
+Phase 3 – Content Expansion & Refinement (Weeks 7‑12)
+
+Full narrative: Expand chapters to include mid‑career and later life stages. Add more career options (healthcare, trades, arts, STEM, military) with different earnings and education requirements.
+
+Mini‑games: Develop additional mini‑games (comparison shopping, weekend planning, investment simulation) inspired by PersonalFinanceLab’s mini‑games
+personalfinancelab.com
+.
+
+Debt and credit mechanics: Implement student loans with interest accrual, credit cards, and credit score calculations. Introduce scenarios that demonstrate consequences of high‑interest loans (drawing on Shady Sam
+edutopia.org
+).
+
+Investing and retirement: Provide simple investment options (savings account, bond, index fund, individual stock) with randomized returns. Incorporate tax‑advantaged accounts (IRA or 401(k)) and show the power of compounding.
+
+User interface improvements: Refine the console output for clarity. Add the ability to save/load games.
+
+Educator features: Develop reflection questions and a teacher guide explaining how to use the game in class and align with learning objectives.
+
+Phase 4 – User Testing & Iteration (Weeks 13‑15)
+
+Pilot testing: Recruit a small group of middle‑ and high‑school students or educators to play the game. Use surveys and knowledge assessments to measure learning gains and gather qualitative feedback on engagement and clarity.
+
+Adjustments: Balance difficulty, adjust narrative pacing, correct biases and refine random event probabilities based on feedback.
+
+Accessibility: Address reading level concerns, add optional hints and consider future translation support.
+
+Phase 5 – Deployment & Future Enhancements (Weeks 16‑18 and ongoing)
+
+Release version 1.0: Publish the game (e.g., as a downloadable Python package or on a simple web interface). Provide documentation and teacher resources.
+
+Maintenance: Fix bugs, respond to user feedback and update financial data regularly (annually) to keep costs and salaries realistic.
+
+Web/mobile port: Plan to migrate the game to a web‑based interface or mobile app for broader access. Consider using frameworks like Twine, Ren’Py or React for interactive storytelling.
+
+Multiplayer/Competitive mode: Explore features where students can compare budgets or collaborate (e.g., forming households, pooling resources). Add leaderboards to motivate replayability.
+
+Additional modules: Create optional expansions—for example, entrepreneurship simulation, home buying, or investing in cryptocurrency—for advanced learners. Each module can be used independently as a class activity.
+
+Data analytics and assessment: Implement analytics (with privacy safeguards) to help teachers track student progress and identify topics needing reinforcement.
+
+6. Conclusion
+
+ChoiceCents aims to make financial literacy engaging by placing students in the driver’s seat of their financial futures. Research shows that many teens lack personal finance knowledge
+fitzsimonscu.com
+, yet game‑based learning can empower them to learn from decisions
+edutopia.org
+. By simulating realistic life choices—education, careers, expenses, savings and investing—and providing immediate feedback, the game will help learners see the impact of their decisions and motivate them to adopt sound financial habits. The modular design and phased roadmap will allow for continuous improvement, alignment with educational standards and adaptation to different classrooms.

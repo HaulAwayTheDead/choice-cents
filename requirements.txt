@@ -1,0 +1,20 @@
+# ChoiceCents Requirements
+# Current version uses only Python standard library
+
+# Future GUI Development (when ready to implement)
+# tkinter - Built into Python, good for desktop GUI
+# pygame - Good for game-like interfaces
+# kivy - Cross-platform, touch-friendly
+# PyQt5/PySide2 - Professional desktop applications
+# flask/streamlit - Web-based interface
+
+# Current Phase - Console Version (No external dependencies)
+# All functionality uses Python 3.7+ standard library only
+
+# Development and Testing
+# pytest>=6.0.0  # For unit testing (optional)
+# black>=21.0.0   # Code formatting (optional)
+# mypy>=0.800     # Type checking (optional)
+
+# Note: Uncomment dependencies above when needed for development
+# For now, the game runs with just Python standard library

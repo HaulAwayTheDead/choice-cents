@@ -1,0 +1,256 @@
+{
+  "careers": {
+    "high_school_only": [
+      {
+        "title": "Retail Associate",
+        "starting_salary": 28800,
+        "salary_growth": 0.03,
+        "education_required": "High school diploma",
+        "description": "Work in retail stores helping customers and managing inventory"
+      },
+      {
+        "title": "Food Service Worker",
+        "starting_salary": 26000,
+        "salary_growth": 0.025,
+        "education_required": "High school diploma",
+        "description": "Work in restaurants, cafeterias, or food preparation"
+      },
+      {
+        "title": "Security Guard",
+        "starting_salary": 31200,
+        "salary_growth": 0.035,
+        "education_required": "High school diploma",
+        "description": "Protect property and people, monitor security systems"
+      }
+    ],
+    "trade_school": [
+      {
+        "title": "Electrician",
+        "starting_salary": 48000,
+        "salary_growth": 0.045,
+        "education_required": "Trade school/Apprenticeship",
+        "description": "Install and maintain electrical systems"
+      },
+      {
+        "title": "Plumber",
+        "starting_salary": 46000,
+        "salary_growth": 0.04,
+        "education_required": "Trade school/Apprenticeship",
+        "description": "Install and repair plumbing systems"
+      },
+      {
+        "title": "Automotive Technician",
+        "starting_salary": 42000,
+        "salary_growth": 0.035,
+        "education_required": "Trade school",
+        "description": "Diagnose and repair vehicles"
+      },
+      {
+        "title": "Dental Hygienist",
+        "starting_salary": 55000,
+        "salary_growth": 0.03,
+        "education_required": "Associate degree",
+        "description": "Clean teeth and educate patients about oral health"
+      }
+    ],
+    "college_degree": [
+      {
+        "title": "Teacher",
+        "starting_salary": 42000,
+        "salary_growth": 0.035,
+        "education_required": "Bachelor's degree",
+        "description": "Educate students in various subjects"
+      },
+      {
+        "title": "Accountant",
+        "starting_salary": 52000,
+        "salary_growth": 0.04,
+        "education_required": "Bachelor's degree",
+        "description": "Prepare and examine financial records"
+      },
+      {
+        "title": "Software Developer",
+        "starting_salary": 68000,
+        "salary_growth": 0.06,
+        "education_required": "Bachelor's degree",
+        "description": "Design and develop computer programs"
+      },
+      {
+        "title": "Nurse (RN)",
+        "starting_salary": 58000,
+        "salary_growth": 0.045,
+        "education_required": "Bachelor's degree",
+        "description": "Provide medical care to patients"
+      },
+      {
+        "title": "Marketing Coordinator",
+        "starting_salary": 45000,
+        "salary_growth": 0.05,
+        "education_required": "Bachelor's degree",
+        "description": "Develop and execute marketing campaigns"
+      },
+      {
+        "title": "Engineer",
+        "starting_salary": 65000,
+        "salary_growth": 0.055,
+        "education_required": "Bachelor's degree",
+        "description": "Design and build systems, structures, or products"
+      }
+    ],
+    "military": [
+      {
+        "title": "Military Personnel",
+        "starting_salary": 26400,
+        "salary_growth": 0.04,
+        "education_required": "High school diploma",
+        "description": "Serve in the armed forces with various specializations"
+      }
+    ],
+    "entrepreneur": [
+      {
+        "title": "Business Owner",
+        "starting_salary": 18000,
+        "salary_growth": 0.15,
+        "education_required": "Variable",
+        "description": "Run your own business - high risk, high reward"
+      }
+    ]
+  },
+  "living_costs": {
+    "indiana_average": {
+      "housing": {
+        "shared_apartment": 600,
+        "studio_apartment": 800,
+        "one_bedroom": 1000,
+        "house_rental": 1400,
+        "house_purchase": 2200
+      },
+      "transportation": {
+        "public_transit": 80,
+        "used_car_payment": 200,
+        "new_car_payment": 350,
+        "car_insurance": 120,
+        "gas_monthly": 150
+      },
+      "food": {
+        "basic_groceries": 300,
+        "moderate_groceries": 450,
+        "dining_out_frequent": 600
+      },
+      "utilities": {
+        "basic": 120,
+        "with_internet": 180
+      },
+      "healthcare": {
+        "basic_insurance": 200,
+        "comprehensive_insurance": 350
+      },
+      "entertainment": {
+        "minimal": 100,
+        "moderate": 250,
+        "high": 500
+      }
+    }
+  },
+  "education_costs": {
+    "four_year_college": {
+      "tuition_per_year": 10000,
+      "room_board_per_year": 12000,
+      "books_supplies": 1200,
+      "total_debt_typical": 40000
+    },
+    "community_college": {
+      "tuition_per_year": 3500,
+      "books_supplies": 800,
+      "total_debt_typical": 15000
+    },
+    "trade_school": {
+      "tuition_total": 12000,
+      "books_supplies": 1000,
+      "total_debt_typical": 13000
+    }
+  },
+  "investment_options": {
+    "savings_account": {
+      "annual_return": 0.015,
+      "risk_level": "Very Low",
+      "description": "FDIC insured, very safe but low returns"
+    },
+    "cd_certificate": {
+      "annual_return": 0.025,
+      "risk_level": "Very Low",
+      "description": "Fixed return for fixed time period"
+    },
+    "government_bonds": {
+      "annual_return": 0.035,
+      "risk_level": "Low",
+      "description": "Government-backed bonds, very safe"
+    },
+    "index_funds": {
+      "annual_return": 0.07,
+      "risk_level": "Medium",
+      "description": "Diversified stock market investment"
+    },
+    "individual_stocks": {
+      "annual_return": 0.08,
+      "risk_level": "High",
+      "description": "Individual company stocks, higher risk and reward"
+    },
+    "retirement_401k": {
+      "annual_return": 0.065,
+      "risk_level": "Medium",
+      "description": "Tax-advantaged retirement account, often with employer matching"
+    }
+  },
+  "random_events": [
+    {
+      "name": "Car Repair",
+      "description": "Your car broke down and needs repairs.",
+      "cost_range": [300, 800],
+      "wellbeing_impact": -5,
+      "probability": 0.15
+    },
+    {
+      "name": "Work Bonus",
+      "description": "Excellent work! You received a bonus.",
+      "cost_range": [-500, -200],
+      "wellbeing_impact": 10,
+      "probability": 0.08
+    },
+    {
+      "name": "Medical Expense",
+      "description": "Unexpected medical bill.",
+      "cost_range": [150, 600],
+      "wellbeing_impact": -3,
+      "probability": 0.12
+    },
+    {
+      "name": "Tax Refund",
+      "description": "You received a tax refund!",
+      "cost_range": [-800, -200],
+      "wellbeing_impact": 5,
+      "probability": 0.06
+    },
+    {
+      "name": "Friend's Wedding",
+      "description": "Your friend is getting married! Gift and travel costs.",
+      "cost_range": [200, 500],
+      "wellbeing_impact": 8,
+      "probability": 0.05
+    },
+    {
+      "name": "Job Promotion",
+      "description": "Congratulations! You got promoted.",
+      "salary_increase": 0.15,
+      "wellbeing_impact": 15,
+      "probability": 0.04
+    },
+    {
+      "name": "Apartment Deposit",
+      "description": "Moving to a new place requires first month + deposit.",
+      "cost_range": [1000, 2000],
+      "wellbeing_impact": 3,
+      "probability": 0.03
+    }
+  ]
+}
